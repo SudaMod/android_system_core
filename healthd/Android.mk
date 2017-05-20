@@ -149,9 +149,11 @@ endif
 
 LOCAL_HAL_STATIC_LIBRARIES := libhealthd
 
+ifneq ($(TARGET_CREATE_CHARGER_SYMLINK),false)
 # Symlink /charger to /sbin/charger
 LOCAL_POST_INSTALL_CMD := $(hide) mkdir -p $(TARGET_ROOT_OUT) \
     && ln -sf /sbin/charger $(TARGET_ROOT_OUT)/charger
+endif
 
 include $(BUILD_EXECUTABLE)
 
